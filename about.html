@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% block title %}
+
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-secondary mb-0" id="exampleModalLabel">Search by keyword</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">About Us</h1>
+                <ol class="breadcrumb justify-content-center text-white mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item active text-secondary">About</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- About Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-xl-5 wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="bg-light rounded">
+                            <img src="/static/img/i1.jpg" class="img-fluid w-100" style="margin-bottom: -7px; height: 500px; " alt="Image">
+                            <!-- <img src="/static/img/i3.jpg" class="img-fluid w-100 border-bottom border-5 border-primary" style="border-top-right-radius: 300px; border-top-left-radius: 300px;" alt="Image"> -->
+                        </div>
+                    </div>
+                    <div class="col-xl-7 wow fadeInRight" data-wow-delay="0.3s">
+                        <h5 class="sub-title pe-3">About</h5>
+                        <h1 class="display-5 mb-4">Anti-Money Laundering System.</h1>
+                        <p class="mb-4">Anti-Money Laundering (AML) systems play a crucial role in ensuring that financial institutions and businesses comply with legal requirements to combat illicit financial activities. These systems are structured around a set of regulations and guidelines issued by governments and international organizations like the Financial Action Task Force (FATF), which sets global standards for AML compliance. Key components of an AML system include Customer Due Diligence (CDD), which verifies the identity of customers and assesses their risk level; ongoing transaction monitoring, which helps detect unusual patterns that may indicate money laundering; and reporting obligations, such as filing Suspicious Activity Reports (SARs) to relevant authorities when potential illegal activity is identified. AML systems also enforce sanctions screening, preventing financial dealings with individuals or entities on watchlists. Regular audits and training for employees are vital to ensure that these systems remain effective, adaptable to new threats, and compliant with evolving regulatory demands.</p>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends "index.html" %}
+{% block title %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/i4.jpg'); /* Replace with your image path */
+            background-size: cover; /* Makes the image cover the entire background */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* Prevents repeating of the image */
+            margin: 0;
+            padding: 0;
+        }
+
+        .containr {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0px 100px;
+        }
+
+        .form-container {
+            display: flex;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 1200px;
+            width: 120%;
+            margin-top: -40px;
+        }
+
+        .form-container img {
+            width: 50%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .form-fields {
+            padding: 20px;
+            width: 50%;
+        }
+
+        .form-fields h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px; /* Space between the two fields */
+            margin-bottom: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1; /* Ensures both fields take up equal space */
+        }
+
+        .form-fields input[type="text"],
+        .form-fields input[type="email"],
+        .form-fields input[type="password"],
+        .form-fields input[type="tel"],
+        .form-fields textarea,
+        .form-fields input[type="file"],
+        .form-fields button {
+            width: 100%; /* Ensure full width within the form row */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-fields textarea {
+            resize: vertical; /* Allows vertical resizing only */
+            height: 100px; /* Default height for the textarea */
+        }
+
+        .form-fields button {
+            background-color: #289bc9;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-fields button:hover {
+            background-color: #459292;
+        }
+    </style>
+</head>
+<body>
+    <div class="containr">
+        <div class="form-container">
+            <!-- Image Section -->
+            <img src="/static/img/i3.jpg" alt="Bank Register Image"> 
+
+            <!-- Form Fields Section -->
+            <div class="form-fields">
+                {% if messages %}
+                {% for message in messages %}
+                <center><p class="alert alert-success">{{ message }}</p></center>
+                {% endfor %}
+                {% endif %}
+                <h2>USer Register</h2>
+                <form action="{% url 'userregister' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" name="firstname" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="lastname" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Password" required pattern=".{8}" 
+                            title="Password must be exactly 8 digits." minlength="8" maxlength="8">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="confirmpassword" placeholder="Confirm Password" required pattern=".{8}" 
+                            title="Password must be exactly 8 digits." minlength="8" maxlength="8">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="tel" name="contactnumber" placeholder="Contact Number" required pattern="[0-9]{10}" 
+                            title="Contact Number must be 10 digits.">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <textarea name="address" placeholder="Address" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="file" name="image" accept="image/*" required>
+                        </div>
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
